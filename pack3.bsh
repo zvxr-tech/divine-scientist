@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# Pack together a bunch of sprites to form an animation run (00-FF) that
+# can be cycled through.
+# This requires sprites with unique names NAME, each with the same number
+# of animation frames, where the frame number is prepended to the filename.
+# Ex.  1_cat.sdat  1_dog.sdat 2_cat.sdat 2_dog.sdat
+#This will pack only one single block, as opposed to pack.bsh which will repeat
+# the animation block until $FF sprite slots are filled.
+#
+# [NEW] This will pack from a file manifest!
+#set -e
+# TODO fix trap, so we can return 1 on error to the build engine (Makefile)
+#error() {
+#	echo "ERROR"
+#	exit 1
+#}
+#set -e
+#trap error ERR
+
+rm -f block.dat
+if [ $# -lt 1 ];then
+  while read L; do
+		for F in `ls $L*.sdat`; do
+			cat $F >> block.dat
+		done
+	done
+elif [ $# -lt 2 ]; then
+	while read L; do
+		for F in `ls $L*.sdat`; do
+			cat $F >> block.dat
+		done
+	done < $1
+else
+	echo "Usage: $0 <manifest_file>"
+  exit 1
+fi
+
+echo "Created block.dat output file"
+
+exit 0
