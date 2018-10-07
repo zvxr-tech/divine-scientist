@@ -1,12 +1,10 @@
 # The Divine Scientist
 This was a game I created for a retrogames archeology course (Aycock).
 The source is 6502 ASM which compiles to run on VIC-20 hardware or emulator.
-It was created under deadline, so there is probably many optimizations/better 
-ways of doing things.
+This code is highly optimized, making use of self-modifying code, laying out data structures to minimize the instruction widths required to act on it, interlaying code and data (polygots), as well as many other subtle optimizations.
 
 ## Author
 Mike Clark - 2016
-Zvxr Pynex - 7561
 
 ## Intro
 After a long day of work at the laboratory, you begin to bicycle home.
@@ -71,7 +69,7 @@ Assets directory contains sprite images used in project.
 - made careful use of how we chose to lay down data to optimize code acting on 
 it
 
-## Improvements
+## Future
 - less difficult
 - better sound
 - music (maybe pushing the limit for space on a regular cart?)
